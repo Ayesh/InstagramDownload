@@ -45,6 +45,18 @@ class InstagramDownload {
     }
     return $this->type;
   }
+  
+  public function getMeta(): string {
+        if (!$this->download_url) {
+            $this->process();
+        }
+
+        $fulltitle = $this->meta_values['og:title'];
+        $bywho = explode("•", $fulltitle);
+
+
+        return trim($bywho[0]);
+    }
 
   /**
    * @param bool $force_dl
